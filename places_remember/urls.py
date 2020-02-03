@@ -30,7 +30,7 @@ urlpatterns += [
 ]
 
 urlpatterns += [
-    path('', RedirectView.as_view(url='/remember/', permanent=True)),
+    path('', RedirectView.as_view(url='/remember/index/', permanent=True)),
     path('social-auth/', include('social_django.urls', namespace="social")),
     path('logout/', auth_views.LogoutView.as_view(), name='logout')
 ]
