@@ -6,5 +6,5 @@ urlpatterns = [
     path('', views.login, name='login'),
     url('remembers/', views.user_remembers, name='user_remembers'),
     url('index/', views.index, name='index'),
-    url(r'^add_remember/$', views.add_remember, name='add_remember'),
+    url(r'^add/$', views.add_remember, name='add_remember'),
 ]
