@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Отметь воспоминания</h1>
+
+  <p>Добро пожаловать на сайт, который позволит сохранить важные для вас места</p>
+
+    <div class="">
+        <div class=" card-body ">
+            <h5 class="card-title">Авторизация</h5>
+            <p class="card-text">Для работы с вашими местами необходимо авторизоваться</p>
+            <button type="button" value="" class="btn btn-primary"
+                    onClick='location.href="{% url 'social:begin' 'facebook' %}"'>Login with Facebook
+            </button>
+        </div>
+    </div>
+
+
+{% endblock %}
