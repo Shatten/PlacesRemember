@@ -15,3 +15,12 @@ class User(models.Model):
 
     def __str__(self):
         return f'{self.id}, {self.first_name}, {self.last_name}'
+
+
+class Remember(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4,
+                          help_text="Уникальный номер воспоминания")
+
+    title = models.CharField(max_length='200', help_text='Название воспоминания')
+    description = models.TextField(max_length=2000, help_text='Описание воспоминания')
+    remembers = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
