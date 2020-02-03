@@ -2,7 +2,12 @@
 
 {% block content %}
 <h1>Добавить воспоминание</h1>
-
+    <form method="POST" class="remember-form">{% csrf_token %}
+        <table>
+        {{ form.as_table }}
+        </table>
+        <button type="submit" class="save btn btn-primary">Save</button>
+    </form>
 
 
 {% endblock %}
