@@ -12,6 +12,7 @@ class User(models.Model):
     last_name = models.CharField(max_length=100, help_text='Фамилия пользователя')
     log_in = models.BooleanField(help_text='Состояние авторизации пользователя')
     facebook_id = models.CharField(max_length=100, help_text='Facebook ID пользователя')
+    session_id = models.CharField(max_length=500, help_text='Id сессии пользователя ')
 
     def __str__(self):
         return f'{self.id}, {self.first_name}, {self.last_name}'
