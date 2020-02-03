@@ -27,8 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'login'
 
-# Application definition
+SOCIAL_AUTH_FACEBOOK_KEY = '1055934148093167'        # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '***'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'remember.apps.RememberConfig'
+    'remember.apps.RememberConfig',
+    'social_django',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -48,6 +55,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 ROOT_URLCONF = 'places_remember.urls'
