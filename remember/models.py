@@ -24,7 +24,7 @@ class Remember(models.Model):
 
     title = models.CharField(max_length=200, help_text='Название воспоминания')
     description = models.TextField(max_length=2000, help_text='Описание воспоминания')
-    remembers = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return f'{self.id}, {self.title}'
