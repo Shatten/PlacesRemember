@@ -30,4 +30,4 @@ class Remember(models.Model):
         return f'{self.id}, {self.title}'
 
     def get_absolute_url(self):
-        return reverse('book-detail', args=[str(self.id)])
+        return reverse('remember-detail', args=[str(self.id)])
