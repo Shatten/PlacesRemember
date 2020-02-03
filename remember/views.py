@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from .forms import RememberForm
 # Create your views here.
 
 @login_required
@@ -21,8 +22,18 @@ def user_remembers(request):
 
 @login_required
 def add_remember(request):
+    if request.method == 'POST':
+        form = RememberForm(request.POST)
+        if form.is_valid():
+            print(form)
+            post = form.save(commit=False)
+            print(post)
+            post.save()
+    else:
+        form = RememberForm()
     return render(
         request,
-        'add_remember.html'
+        'add_remember.html',
+        context={'form': form}
     )
 
