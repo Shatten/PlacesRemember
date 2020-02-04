@@ -1,14 +1,19 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<h1>Ваши воспоминания</h1>
+    <h1>Ваши воспоминания</h1>
     {% if remember_list %}
         <div class="col-sm-10">
-        <div class="sidebar-nav list-group ">
-            {% for remember in remember_list %}
-                <a class="list-group-item list-group-item-action" href="{{ remember.get_absolute_url }}"> {{ remember.title }}</a>
-            {% endfor %}
-        </div>
+            <div class="sidebar-nav list-group ">
+                {% for remember in remember_list %}
+                    <div class="list-group-item ">
+                        <a class=" list-group-item-action"
+                           href="{{ remember.get_absolute_url }}">{{ remember.title }}</a>
+                    </div>
+
+
+                {% endfor %}
+            </div>
         </div>
 
     {% else %}

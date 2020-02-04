@@ -4,9 +4,9 @@
     <script type="text/javascript">
         ymaps.ready(init);
         function init() {
-            let coords_text = "{{remember.map_coordinates}}".replace(/&quot;/g,"\"")
-            let coords = [parseFloat(coords_text.split(';')[0]),parseFloat(coords_text.split(';')[1])];
-            let  myMap = new ymaps.Map("map_detail", {
+            let coords_text = "{{remember.map_coordinates}}".replace(/&quot;/g, "\"")
+            let coords = [parseFloat(coords_text.split(';')[0]), parseFloat(coords_text.split(';')[1])];
+            let myMap = new ymaps.Map("map_detail", {
                 center: coords,
                 zoom: 12
             });
@@ -14,10 +14,21 @@
             myMap.geoObjects.add(myPlacemark)
         }
     </script>
-    <h1>Воспоминание {{ remember.title }}</h1>
-    <p>Описание места:</p>
-    <p>{{ remember.description }}</p>
-    <p>Место:</p>
-    <div id="map_detail" style="width: 600px; height: 400px"></div>
+
+    <h1>Воспоминание: <b>{{ remember.title }}</b></h1>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="form-group">
+                <label for="id_title">Описание</label>
+                <div><p>{{ remember.description }}</p></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="id_title">Место</label>
+                <div id="map_detail" style="width: 600px; height: 400px"></div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
