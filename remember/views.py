@@ -30,9 +30,11 @@ def user_remembers(request):
 def add_remember(request):
     if request.method == 'POST':
         form = RememberForm(request.POST)
+        print(request.body)
         if form.is_valid():
             post = form.save(commit=False)
             post.id_user = request.user
+            post.map_coordinates = request.POST['map_coordinates']
             post.save()
     else:
         form = RememberForm()
