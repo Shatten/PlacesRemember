@@ -2,11 +2,32 @@
 
 {% block content %}
 <h1>Добавить воспоминание</h1>
+    <script type="text/javascript">
+        ymaps.ready(init);
+        function init() {
+            var myMap = new ymaps.Map("map", {
+                center: [56.826774,60.616597],
+                zoom: 12
+            });
+            myPlacemark = new ymaps.Placemark([55.661574, 37.573856]);
+            myMap.geoObjects.add(myPlacemark)
+            {#myMap.geoObjects.remove(myPlacemark)#}
+            myMap.events.add('click', function (e) {
+                let coords = e.get('coords');
+                let title_remember = document.getElementById('id_map_coordinates');
+                title_remember.value = `${coords[0].toPrecision(8)};${coords[1].toPrecision(8)}`;
+                myPlacemark.geometry.setCoordinates(coords)
+
+            });
+
+        }
+    </script>
+    <div id="map" style="width: 600px; height: 400px"></div>
     <form method="POST" class="remember-form">{% csrf_token %}
-        <table>
-        {{ form.as_table }}
-        </table>
-        <button type="submit" class="save btn btn-primary">Save</button>
+        {{ form.title}}
+        {{ form.description}}
+        <input readonly  value="" name="map_coordinates" id="id_map_coordinates">
+        <button  type="submit" class="save btn btn-primary">Save</button>
     </form>
 
 
