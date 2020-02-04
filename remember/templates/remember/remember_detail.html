@@ -1,9 +1,23 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<h1>Воспоминание {{ remember.title }}</h1>
-
-
-
+    <script type="text/javascript">
+        ymaps.ready(init);
+        function init() {
+            let coords_text = "{{remember.map_coordinates}}".replace(/&quot;/g,"\"")
+            let coords = [parseFloat(coords_text.split(';')[0]),parseFloat(coords_text.split(';')[1])];
+            let  myMap = new ymaps.Map("map_detail", {
+                center: coords,
+                zoom: 12
+            });
+            myPlacemark = new ymaps.Placemark(coords);
+            myMap.geoObjects.add(myPlacemark)
+        }
+    </script>
+    <h1>Воспоминание {{ remember.title }}</h1>
+    <p>Описание места:</p>
+    <p>{{ remember.description }}</p>
+    <p>Место:</p>
+    <div id="map_detail" style="width: 600px; height: 400px"></div>
 
 {% endblock %}
