@@ -5,6 +5,7 @@ from .models import Remember
 from django.views import generic
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
@@ -25,10 +26,10 @@ def login(request):
 def add_remember(request):
     if request.method == 'POST':
         form = RememberForm(request.POST)
-        print(request.body)
         if form.is_valid():
             post = form.save(commit=False)
             post.id_user = request.user
+
             post.save()
         return HttpResponseRedirect(reverse('remembers'))
     else:
@@ -41,16 +42,16 @@ def add_remember(request):
     )
 
 
-class RememberListView(generic.ListView):
+class RememberListView(LoginRequiredMixin, generic.ListView):
     model = Remember
 
     def get_queryset(self):
         queryset_all = super(RememberListView, self).get_queryset()
-        queryset_user = queryset_all .filter(id_user=self.request.user)
+        queryset_user = queryset_all.filter(id_user=self.request.user)
         return queryset_user
 
 
-class RememberDetailView(generic.DetailView):
+class RememberDetailView(LoginRequiredMixin, generic.DetailView):
     model = Remember
 
     def get_queryset(self):
