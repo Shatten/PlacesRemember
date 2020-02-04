@@ -2,8 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .forms import RememberForm
 from .models import Remember
-from django.contrib.auth.models import User
-from django.contrib import auth
+from django.views import generic
 # Create your views here.
 
 @login_required
@@ -22,7 +21,7 @@ def user_remembers(request):
 
     return render(
         request,
-        'user_remembers.html',
+        'remember/remember_list.html',
         context={'remembers_list': remembers_list}
     )
 
@@ -34,7 +33,7 @@ def add_remember(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.id_user = request.user
-            post.map_coordinates = request.POST['map_coordinates']
+            # post.map_coordinates = request.POST['map_coordinates']
             post.save()
     else:
         form = RememberForm()
@@ -44,3 +43,10 @@ def add_remember(request):
         context={'form': form}
     )
 
+
+class RememberListView(generic.ListView):
+    model = Remember
+
+
+class RememberDetailView(generic.DetailView):
+    model = Remember
