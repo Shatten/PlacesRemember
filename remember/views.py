@@ -25,9 +25,8 @@ def add_remember(request):
     if request.method == 'POST':
         form = RememberForm(request.POST)
         if form.is_valid():
-            print(form)
             post = form.save(commit=False)
-            print(post)
+            post.id_user = request.user
             post.save()
     else:
         form = RememberForm()
