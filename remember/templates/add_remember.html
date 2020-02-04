@@ -5,7 +5,7 @@
     <script type="text/javascript">
         ymaps.ready(init);
         function init() {
-            var myMap = new ymaps.Map("map", {
+            let myMap = new ymaps.Map("map_add", {
                 center: [56.826774,60.616597],
                 zoom: 12
             });
@@ -22,7 +22,7 @@
 
         }
     </script>
-    <div id="map" style="width: 600px; height: 400px"></div>
+    <div id="map_add" style="width: 600px; height: 400px"></div>
     <form method="POST" class="remember-form">{% csrf_token %}
         {{ form.title}}
         {{ form.description}}
