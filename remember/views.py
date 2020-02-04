@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .forms import RememberForm
+from .models import Remember
+from django.contrib.auth.models import User
+from django.contrib import auth
 # Create your views here.
 
 @login_required
@@ -15,9 +18,12 @@ def login(request):
 
 @login_required
 def user_remembers(request):
+    remembers_list = Remember.objects.filter(id_user=request.user)
+
     return render(
         request,
-        'user_remembers.html'
+        'user_remembers.html',
+        context={'remembers_list': remembers_list}
     )
 
 @login_required
