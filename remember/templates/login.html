@@ -1,17 +1,18 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<h1>Отметь воспоминания</h1>
+    <h1>Воспоминания о посещенных местах...</h1>
 
-  <p>Добро пожаловать на сайт, который позволит сохранить важные для вас места</p>
+    <h3>Добро пожаловать на сайт, который позволит оставить воспоминания о посещенных местах</h3>
 
     <div class="">
-        <div class=" card-body ">
-            <h5 class="card-title">Авторизация</h5>
-            <p class="card-text">Для работы с вашими местами необходимо авторизоваться</p>
-            <button type="button" value="" class="btn btn-primary"
-                    onClick='location.href="{% url 'social:begin' 'facebook' %}"'>Login with Facebook
-            </button>
+        <div class=" card-body " >
+            <p class="card-text">Для работы с сайтом необходимо авторизоваться </p>
+            <div >
+                <button type="button" value="" class="btn btn-primary"
+                        onClick='location.href="{% url 'social:begin' 'facebook' %}"'>Login with Facebook
+                </button>
+            </div>
         </div>
     </div>
 
