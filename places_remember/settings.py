@@ -25,7 +25,7 @@ SECRET_KEY = 'nc9s3vnlsf5gvix$(s@4j281%+w*ja@(=*^2*9=-$^3!u-iy7d'
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
-ALLOWED_HOSTS = ['places-remember-shatt.herokuapp.com/']
+ALLOWED_HOSTS = ['places-remember-shatt.herokuapp.com']
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
