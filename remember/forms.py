@@ -4,4 +4,4 @@ from .models import Remember
 class RememberForm(forms.ModelForm):
     class Meta:
         model = Remember
-        fields = ('title', 'description',)
+        fields = ('title', 'description', 'map_coordinates')
