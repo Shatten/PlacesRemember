@@ -128,3 +128,5 @@ Logs/
 /database
 /certname.crt
 /certname.key
+/cert.crt
+/cert.key
