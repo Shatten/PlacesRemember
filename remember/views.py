@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from .forms import RememberForm
 from .models import Remember
 from django.views import generic
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 # Create your views here.
 
 @login_required
@@ -35,8 +37,10 @@ def add_remember(request):
             post.id_user = request.user
             # post.map_coordinates = request.POST['map_coordinates']
             post.save()
+        return HttpResponseRedirect(reverse('remembers'))
     else:
         form = RememberForm()
+
     return render(
         request,
         'add_remember.html',
