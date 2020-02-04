@@ -52,3 +52,18 @@ class RememberListView(generic.ListView):
 
 class RememberDetailView(generic.DetailView):
     model = Remember
+
+    def get_queryset(self):
+        queryset_all = super(RememberDetailView, self).get_queryset()
+        return queryset_all
+
+    def get_context_data(self, **kwargs):
+        temp = super(RememberDetailView, self).get_context_data(**kwargs)
+        remember = temp.get('remember')
+        if remember:
+            if remember.id_user != self.request.user:
+                temp = None
+        return temp
+
+
+
