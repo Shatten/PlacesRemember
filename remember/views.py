@@ -22,17 +22,6 @@ def login(request):
 
 
 @login_required
-def user_remembers(request):
-    remembers_list = Remember.objects.filter(id_user=request.user)
-
-    return render(
-        request,
-        'remember/remember_list.html',
-        context={'remembers_list': remembers_list}
-    )
-
-
-@login_required
 def add_remember(request):
     if request.method == 'POST':
         form = RememberForm(request.POST)
@@ -54,6 +43,11 @@ def add_remember(request):
 
 class RememberListView(generic.ListView):
     model = Remember
+
+    def get_queryset(self):
+        queryset_all = super(RememberListView, self).get_queryset()
+        queryset_user = queryset_all .filter(id_user=self.request.user)
+        return queryset_user
 
 
 class RememberDetailView(generic.DetailView):
