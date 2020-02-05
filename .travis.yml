@@ -1,0 +1,13 @@
+language: python
+
+#env:
+#  - DJANGO=3.0.3 DB=sqlite3
+
+install:
+  - pip install -r requirements.txt
+  - pip install coveralls
+script:
+  - python -m coverage run  manage.py test remember/tests
+
+after_success:
+  - coveralls
