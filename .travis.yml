@@ -1,7 +1,7 @@
 language: python
 
-env:
-  - DJANGO=3.0.3 DB=sqlite3
+#env:
+#  - DJANGO=3.0.3 DB=sqlite3
 
 install:
   - pip install -r requirements.txt
