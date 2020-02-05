@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Мои воспоминания</h1>
+    <div style="width: 75%; max-width: 800px; min-width: 400px; margin: 0 auto; padding-top: 15px">
+    {% if remember_list %}
+            <div class="list-group " >
+                {% for remember in remember_list %}
+                    <div class=" ">
+                        <a class=" list-group-item-action list-group-item"
+                           href="{{ remember.get_absolute_url }}">{{ remember.title }}</a>
+                    </div>
+                {% endfor %}
+            </div>
+    {% else %}
+        К сожалению, вы не записали еще ни одного воспоминания
+    {% endif %}
+</div>
+
+
+{% endblock %}

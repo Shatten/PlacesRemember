@@ -1,0 +1,41 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <div class="card ">
+
+        <div class="card-header text-center">
+            <h1>PlacesRemember</h1>
+        </div>
+        <div style="padding-top: 20px; "  class=" lead">
+            <div class="row row-centered row-conformity" >
+                <div  class="col-sm-6 col-md-5 col-md-push-1 text-justify" >
+                    <b>PlacesRemember</b> - это не просто воспоминания.
+                <br>Здесь Вы можете поставить точку на карте, ввести название и
+                описание места.
+                    <br>Мы сохраним Ваши заметки.
+                    </div>
+                <div  class="col-sm-6 col-md-5 col-md-push-1 text-justify" >
+
+                    В любой момент Вы можете освежить в памяти не только самые яркие впечатления, но и <u>геолокацию</u> с
+                точными
+                координатами вашего путешествия.
+                </div>
+            </div>
+
+        </div>
+
+        <hr style="background-color: #666666; height: 2px">
+        <div class="lead text-center">
+            Чтобы воспользоваться сайтом, необходимо авторизоваться
+        </div>
+        <div class=" text-center">
+            <button type="button" value="" style="min-width: 250px; min-height: 50px" class="btn btn-primary"
+                    onClick='location.href="{% url 'social:begin' 'facebook' %}"'>Login with Facebook
+            </button>
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

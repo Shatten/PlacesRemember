@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% block title %}<title>Places Remember</title>{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=a46dee32-68ec-46a3-af1f-06e9cc4498c8&lang=ru_RU"
+            type="text/javascript">
+
+    </script>
+    <style>
+        .background_img {
+            background: url('/static/background.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            position: relative;
+            height: 100%;
+
+        }
+
+        .jumbotron {
+            background-color: rgba(230, 230, 230, 0.85);
+        }
+    </style>
+    {% load static %}
+</head>
+
+<body class="background_img">
+<div class="container-fluid" style="padding: 10px; ">
+
+    <div class="row">
+        {% if user.is_authenticated %}
+            <div class="col-sm-2">
+                {% block sidebar %}
+                    <div class="sidebar-nav list-group ">
+                        {#                    <a class="list-group-item list-group-item-action" href="{% url 'index' %}">Главная</a>#}
+
+                        <a class="list-group-item list-group-item-action" href="{% url 'remembers' %}">Мои
+                            воспоминания</a>
+                        <a class="list-group-item list-group-item-action" href="{% url 'add_remember' %}">Добавить
+                            воспоминание</a>
+                        <a class="list-group-item list-group-item-action" href="{% url 'logout' %}">Выйти</a>
+
+                    </div>
+                {% endblock %}
+            </div>
+
+            <div class="col-md-10 ">
+
+        {% else %}
+            <div>
+        {% endif %}
+        <div class="jumbotron">
+            {% block content %}{% endblock %}
+        </div>
+        </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>PlacesRemember</h1>
+
+    <h3>Добро пожаловать,
+        {% if user.first_name and user.last_name %}
+            <b>{{ user.first_name }} {{ user.last_name }}</b></h3>
+        {% else %}
+            к сожалению, не знаю вашего имени
+        {% endif %}
+
+{% endblock %}
